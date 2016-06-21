@@ -3,8 +3,8 @@ import path from 'path';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import fs from 'fs';
-import users from '../controlers/users';
-import auth from '../controlers/auth';
+import users from './controllers/users';
+import auth from './controllers/auth';
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 //load controllers
-app.use('/api/auth', users);
+app.use('/api/auth', auth);
 app.use('/api/users', users);
 
 // catch 404 and forward to error handler
