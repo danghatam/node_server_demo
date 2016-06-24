@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import fs from 'fs';
+import mongoose from 'mongoose';
 import users from './controllers/users';
 import auth from './controllers/auth';
 
@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'build')));
+
+// connect database
+mongoose.connect(`mongodb://localhost:27017/trainning`);
 
 //load controllers
 app.use('/api/auth', auth);

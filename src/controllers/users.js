@@ -14,15 +14,19 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  res.json({
-    success: true
-  });
+  UserService.get(req.params.id).then( data => {
+    res.json({
+      success: true
+    });
+  }).catch(next);
 });
 
 router.post('/', (req, res, next) => {
-  res.json({
-    success: true
-  });
+  UserService.add(req.body).then(data => {
+    res.json({
+      success: true
+    });
+  })
 });
 
 router.put('/:id', (req, res, next) => {
