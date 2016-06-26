@@ -25,6 +25,7 @@ class UserService {
   //add new user
   add(params) {
     return new Promise((resolve, reject) => {
+    	c
       const input = {
         username: params.username,
         password: params.password
